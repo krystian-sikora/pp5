@@ -9,12 +9,13 @@
   </head>
   <body>
     <div class="container">
-    <!-- <button type="button" class="btn btn-primary" onclick="showForm()">Pokaż formularz</button>
-    <button type="button" class="btn btn-primary" onclick="showList()">Pokaż listę</button> -->
+      <h1>Form</h1>
+      <div class="d-flex justify-content-center">
+      <div class="w-50">
 
     <form id="client-form" onsubmit="return save(event)">
         <div class="mb-3">
-            <label for="nazwaFirmy" class="form-label" >Nazwa firmy</label>
+            <label for="nazwaFirmy" class="form-label" >Company name</label>
             <input type="text" class="form-control" id="nazwaFirmy" aria-describedby="" required>
         </div>
         <div class="mb-3">
@@ -22,53 +23,56 @@
             <input type="text" class="form-control" id="NIP" aria-describedby="" required>
         </div>
         <div class="mb-3">
-            <label for="miasto" class="form-label" >Miasto</label>
+            <label for="miasto" class="form-label" >City</label>
             <input type="text" class="form-control" id="miasto" aria-describedby="" required>
         </div>
         <div class="mb-3">
-            <label for="ulica" class="form-label" >Ulica</label>
+            <label for="ulica" class="form-label" >Street</label>
             <input type="text" class="form-control" id="ulica" aria-describedby="" required>
         </div>
         <div class="mb-3">
-            <label for="numerDomu" class="form-label" >Numer domu</label>
+            <label for="numerDomu" class="form-label" >House number</label>
             <input type="text" class="form-control" id="numerDomu" aria-describedby="" required>
         </div>
         <div class="mb-3">
-            <label for="numerMieszkania" class="form-label" >Numer mieszkania</label>
+            <label for="numerMieszkania" class="form-label" >Flat number</label>
             <input type="text" class="form-control" id="numerMieszkania" aria-describedby="">
         </div>
         <div class="mb-3">
-            <label for="kodPocztowy" class="form-label" >Kod pocztowy</label>
+            <label for="kodPocztowy" class="form-label" >Zip code</label>
             <input type="text" class="form-control" id="kodPocztowy" aria-describedby="" required>
         </div>
         <div class="form-floating mb-3">
             <textarea class="form-control" placeholder="Zostaw tu swoje uwagi" id="uwagi"></textarea>
-            <label for="floatingTextarea">Uwagi</label>
+            <label for="floatingTextarea">Comments</label>
         </div>
         <div class="mb-3">
             <select class="form-select" aria-label="Default select example" id="branża">
-                <option selected>Branża</option>
+                <option selected>Industry</option>
                 <option value="1">IT</option>
-                <option value="2">Rozrywka</option>
-                <option value="3">Branża 3</option>
+                <option value="2">Entertainment</option>
             </select>
         </div>
         
         <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
             <input type="checkbox" class="btn-check" id="btncheck1" autocomplete="off">
-            <label class="btn btn-outline-primary" for="btncheck1">Aktywny</label>
+            <label class="btn btn-outline-primary" for="btncheck1">Active</label>
         </div>
-        <button type="submit" class="btn btn-primary">Prześlij</button>
+        <button type="submit" class="btn btn-primary">Save</button>
         <!-- <button type="button" class="btn btn-primary" onclick="lock()">Wstaw</button> -->
       </form>
-      <div class="client-list" id="client-list" style="display: none;">
-        <ul class="customer-list" id="customer-list">
+      <div id="client-list-container" style="display: none;">
+        <ul class="list-group" id="client-list">
         </ul>
+        <button type="button" class="btn btn-primary" onclick="showForm()">Add new customer</button>      
       </div>
+    </div>
+    </div>
   </div>
   </body>
   <footer>
     <script src="customer.js"></script> 
-    <script src="main.js"></script> 
+    <script src="main.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
   </footer>
 </html>

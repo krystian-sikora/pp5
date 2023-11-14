@@ -19,25 +19,23 @@ function save(event) {
     newCustomer.field = document.getElementById("branża").value
     newCustomer.isActive = document.getElementById("btncheck1").checked
 
-    console.log(newCustomer)
+    // lock()
 
-    lock()
-    if (userExists(newCustomer)) {
-        customers.find().push(newCustomer)
-        console.log("exists")
-    } else {
-        customers.push(newCustomer)
-        console.log(customers)
-    }
+    saveUser(newCustomer)
+    showList()
 }
 
-function userExists(newCustomer) {
+function saveUser(newCustomer) {
     for (let i in customers) {
         if (customers[i].taxId == newCustomer.taxId) {
-            return true
+            customers[i] = newCustomer
+            console.log("overwritten customer")
+            return 0
         }
     }
-    return false
+    customers.push(newCustomer)
+    console.log("saved new customer")
+    return 1
 }
 
 function edit(taxId) {
@@ -66,15 +64,20 @@ function showList() {
     loadList()
 
     document.getElementById("client-form").style.display = "none";
-    document.getElementById("client-list").style.display = "block";
+    document.getElementById("client-list-container").style.display = "block";
 }
 
 function loadList() {
-    let ul = document.getElementById("customer-list");
+    emptyList()
+    let ul = document.getElementById("client-list");
     console.log(customers)
     for (let i in customers) {
-        ul.innerHTML += `<li class="list-group-item" onclick="edit(${customers[i].taxId})">${customers[i].getData()}</li>`
+        ul.innerHTML += `<li class="list-group-item customer-list-item" onclick="edit(${customers[i].taxId})">${customers[i].getData()}</li>`
     }
+}
+
+function emptyList() {
+    $('.customer-list-item').remove()
 }
 
 
